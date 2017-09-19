@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/gritter/css/jquery.gritter.css" />
+  <link rel="stylesheet" href="assets/colortip/colortip-1.0-jquery.css">
+      <!--right slidebar-->
+      <link href="css/slidebars.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css" />
+    <script src="js/jquery/jquery-1.11.2.min.js"></script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="js/flatlabbootstrap3/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/flatlabbootstrap3/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/flatlabbootstrap3/jquery.scrollTo.min.js"></script>
+    <script src="js/flatlabbootstrap3/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" src="assets/gritter/js/jquery.gritter.js"></script>
+    <script src="js/flatlabbootstrap3/respond.min.js" ></script>
+    <script type="text/javascript" src="js/flatlabbootstrap3/jquery.pulsate.min.js"></script>
+    <script src="assets/colortip/colortip-1.0-jquery.js"></script>
+
+    <!--right slidebar-->
+    <script src="js/flatlabbootstrap3/slidebars.min.js"></script>
+
+    <!--common script for all pages-->
+    <script src="js/flatlabbootstrap3/common-scripts.js"></script>
+
+    <!--script for this page only-->
+    <script src="js/flatlabbootstrap3/gritter.js" type="text/javascript"></script>
+    <script src="js/flatlabbootstrap3/pulstate.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src='http://webapi.amap.com/maps?v=1.3&key=e3755740b3fe2b1fc657eab8e8f07ca9&plugin=AMap.Scale,AMap.OverView,AMap.ToolBar,AMap.CitySearch,AMap.MapType,AMap.MarkerClusterer,AMap.Geocoder'></script>
+    <script src="js/jquery.huayumap.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        var allPoints = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/allPoints',type:'POST'};
+        var CLinfo = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/info?id=',type:'GET'};
+        var CLcreet = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/creet?id=',type:'GET'};
+        var areaPoint = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/areaPoint?type=',type:'GET'};
+        var allPointstype = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/allPoints?type=cl',type:'GET'};
+        var searchPath = {path:'http://zbusmgr.huayusoft.com:9888/busPlat/rest/mapData/searchVeinfo',type:'POST'};
+    </script>
+    <script src="js/jquery.huayu.js"></script>
+
+
+<style>
+    .marker-route{position: absolute;width: 60px;height: 60px;cursor: pointer;}
+    .marker-route i,.marker-route a{width:100%;height:100%;display: inherit;}
+    .marker-route-1 i{background: url('img/icon_map_tcc.png') no-repeat;}
+    .marker-route-2 i{background: url('img/icon_map_xnc.png') no-repeat;}
+    .marker-route-3 i{background: url('img/icon_map_gd.png') no-repeat;}
+    .marker-route-4 i{background: url('img/icon_map_zx.png') no-repeat;}
+    .marker-route-5 i{background: url('img/icon_map_lx.png') no-repeat;}
+    .marker-route-6 i{background: url('img/icon_map_jq.png') no-repeat;}
+    .marker-route-7 i{background: url('img/icon_map_xsq.png') no-repeat;}
+    
+    .clkzcontext{width: 100%;padding: 0;margin: 0;}
+    .clkzcontext tr {height: 45px;padding: 0;margin: 0;}
+    .clkzcontext tr button{width: 100px;}
+    .clkzcontext-td{width:20%;padding: 0;margin: 0;}
+    .clkzcontext tr td{padding: 10px 0;}
+    .hzzcontext{width: 100%;padding: 0;margin: 0;}
+    .hzzcontext tr {min-height: 25px;padding: 0;margin: 0;}
+    .hzzcontext tr button{width: 100px;}
+    .hzzcontext-td{width:20%;padding: 0;margin: 0;}
+    .hzzcontext tr td{padding: 10px 0;}
+    .searchbox{position: absolute;width: 500px;top:10px;left: calc((100vw - 500px) / 2);z-index: 1;}
+    .loadingimage{text-align: center;}
+    .loadingbody{position: absolute;left: 0;right:0;top: 0;bottom: 0; background: rgba(0, 0, 0,0.5);z-index: 999999; text-align: center;}
+    .loadingbody .loading{margin: calc((100vh - 100px) / 2) auto 0 auto;}
+    .alertmessage{position: absolute;bottom: 0;left: calc((100vw - 400px) / 2);width: 400px;z-index: 1600; display: none;}
+    .gongnengdiv1{float: left;width: 450px;}
+    .gongnengdiv2{float: left;margin: 0 0 0 10px;}
+    .gongnengdiv2:last-child{display: none;}
+    .rightPanel { position: fixed; top: 10px; right: 10px; z-index: 10000; } 
+    @media (min-width: 768px){
+        .modal-dialog {margin: 60px auto 30px auto;}
+    }
+    div.amap-controls .amap-maptypecontrol{top:50px;}
+    .legend img{display:inline-block;width:24px;height:20px;margin-right:16px;}
+    .legend li{height:20px;line-height:20px;text-align:left;margin-bottom:8px;color:#222;}
+    .legend ul>:first-child{margin-top:10px;}
+    .fl{float:left}
+    .cla{display:table-cell;height:0;content:'';clear:both}
+
+    .loading {
+        width:0;
+        height:0;
+        border-right:30px solid #58c9f3;
+        border-top:30px solid #269abc;
+        border-left:30px solid #58c9f3;
+        border-bottom:30px solid #269abc;
+        border-radius: 30px;
+        -moz-border-radius: 30px;
+        -webkit-border-radius: 30px;
+    }
+    .loading {
+        animation: bganim 0.6s linear 0s infinite;
+        -moz-animation: bganim 0.6s linear 0s infinite;
+        -webkit-animation: bganim 0.6s linear 0s infinite;
+    }
+    @keyframes bganim {
+        from { transform:rotate(0deg); } to { transform:rotate(360deg); }
+    }
+    @-moz-keyframes bganim {
+        from { -moz-transform:rotate(0deg); } to { -moz-transform:rotate(360deg); }
+    }
+    @-webkit-keyframes bganim {
+        from { -webkit-transform:rotate(0deg); } to { -webkit-transform:rotate(360deg); }
+    }
+    p{padding:0;margin:0;}
+    .checkBody .btn_p{text-align:center;margin-top:16px;}
+    .checkBody p{color:#222;margin:6px 0;}
+    .checkBody p label input{vertical-align:middle; margin-bottom:7px; }
+    #accordion a{display:block;}
+    #accordion{box-shadow: 0 0 6px #58c9f3 }
+    .dwon ul{width:376px;position:absolute;top:44px;left:calc((100vw - 500px)/2);z-index:2;background-color:#fff;border-radius:0 0 5px 5px;box-shadow:0 0 4px #58c9f3;max-height:500px;overflow:auto;display:none;}
+    .dwon ul li a{text-decoration:none;display:block;height:30px;font-size:14px;line-height:30px;padding-left:13px;}
+    .dwon ul li a:hover{background:#58c9f3;color:#fff;}
+</style>
+
+</head>
+
+<body>    
+    <div class="loadingbody" id="loadingimage" style="display: none;">
+        <!--<img src="img/loading.gif" />-->
+        <div class="loading"></div>
+    </div>
+    <div class="searchbox">
+        <div class="input-group gongnengdiv1">
+            <input type="text" class="form-control" id="searchinput" placeholder="请输入要搜索的车牌号">
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="button" id="mapsearchbtn" style="width: 74px;">搜索</button>
+            </span>
+        </div>
+        <div class="gongnengdiv2" id="quanpingbtn">
+            <button type="button" class="btn btn-info" title="全屏"><i class="fa fa-expand"></i></button>
+        </div>
+        <div class="gongnengdiv2" id="huanyuanbtn">
+            <button type="button" class="btn btn-info" title="还原"><i class="fa fa-compress"></i></button>
+        </div>
+
+    </div>
+    <div class="dwon Panel">
+        <ul id="searchContent">
+        </ul>
+    </div>
+    <div id="container"></div>
+    
+    <div class="rightPanel">
+        <div class="btn-group" data-toggle="buttons">
+            <label id="gongdi" class="btn btn-info">
+                                  <input type="checkbox"> 工地
+            </label>
+            <label id="xiaonachang" class="btn btn-info">
+                                  <input type="checkbox"> 消纳厂
+            </label>
+            <label id="jinqu" class="btn btn-info">
+                                  <input type="checkbox"> 禁区
+            </label>
+            <label id="xiansuquan" class="btn btn-info">
+                                  <input type="checkbox"> 限速圈
+            </label>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
+                           数据显示设置
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse ">
+                    <div class="panel-body checkBody">
+                     <!-- <p class="byCar">
+                          <label class="checkbox-inline">&nbsp;<input type="checkbox" id="online" >在线车辆</label>
+                          <label class="checkbox-inline">&nbsp;<input type="checkbox" id="onLive" >离线车辆</label>
+                      </p>-->
+                      <p>
+                            <label class="checkbox-inline">&nbsp;<input type="checkbox"  id="num">显示车牌</label>
+                            <label class="checkbox-inline">&nbsp;<input type="checkbox" id="inc">显示公司</label>
+                      </p><!--
+                        <p>
+                            <label class="checkbox-inline">&nbsp;<input type="checkbox">限速区域</label>
+                            <label class="checkbox-inline">&nbsp;<input type="checkbox">显示渣场</label>
+                        </p>-->
+
+                        <p class="btn_p">
+                            <button type="button" class="btn btn-info" id="searchBtn">确定检索设置</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="legend cla">
+            <ul class="fl">
+                <li><img src="img/icon_map_zx.png" alt=""><span>在线车辆</span></li>
+                <li><img src="img/icon_map_lx.png" alt=""><span>离线车辆</span></li>
+                <li><img src="img/jh_map_cl.png" alt=""><span>车辆聚合</span></li>
+                <li><img src="img/icon_map_xsq.png" alt=""><span>限速圈</span></li>
+
+            </ul>
+            <ul class="fl">
+                <li><img src="img/icon_map_gd.png" alt=""><span>工地</span></li>
+                <li><img src="img/icon_map_jq.png" alt=""><span>禁区</span></li>
+                <li><img src="img/icon_map_tcc.png" alt=""><span>停车场</span></li>
+                <li><img src="img/icon_map_xnc.png" alt=""><span>消纳场</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="alertmessage" id="alertmessage">
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">车辆信息</h4>
+                </div>
+                <div class="modal-body" id="cheliangcontext">
+                </div>
+                <div class="modal-footer" id="cheliangcontext2" style="text-align: left;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">车辆控制</h4>
+                </div>
+                <div class="modal-body" id="clkzcontext">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">核准证</h4>
+                </div>
+                <div class="modal-body" id="hzzcontext">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-dialog-center" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrap">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">系统消息</h4>
+                    </div>
+                    <div class="modal-body" id="confirmcontext"></div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        <button class="btn btn-warning" type="button" id="confirmok">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            $(function(){
+                $('.amap-maptypecontrol').css('display','none');
+            });
+    </script>
+</body>
+
+</html>

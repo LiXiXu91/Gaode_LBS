@@ -1,0 +1,34 @@
+{
+    "result": "0",
+    "message": "",
+    "data": [
+        {
+            "id": 121,
+            "lng": 113.164481,
+            "lat": 23.212824,
+            "icontype": 4,
+            "direction": 40
+        },
+        {
+            "id": 125,
+            "lng": 113.228476,
+            "lat": 23.227625,
+            "icontype": 4,
+            "direction": 50
+        },
+        {
+            "id": 123,
+            "lng": 113.256485,
+            "lat": 23.073543,
+            "icontype": 4,
+            "direction": 62
+        },
+        {
+            "id": 124,
+            "lng": 113.14805,
+            "lat": 23.234368,
+            "icontype": 4,
+            "direction": 12
+        }
+    ]
+}

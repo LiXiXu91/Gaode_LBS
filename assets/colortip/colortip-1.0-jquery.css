@@ -1,0 +1,258 @@
+.colorTip4{
+	/* This class is assigned to the color tip span by jQuery */
+	
+	display:none;
+	position:absolute;	
+	left:-44px;
+	padding:6px;
+	
+	background-color:white;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	line-height:1;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0 0 1px white;
+	white-space:nowrap;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	z-index: 5;
+}
+
+.colorTip3{
+	/* This class is assigned to the color tip span by jQuery */
+	
+	display:none;
+	position:absolute;	
+	right:-44px;
+	padding:6px;
+	
+	background-color:white;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	line-height:1;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0 0 1px white;
+	white-space:nowrap;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	z-index: 5;
+}
+
+.colorTip2{
+	/* This class is assigned to the color tip span by jQuery */
+	
+	display:none;
+	position:absolute;	
+	left:50%;
+	bottom:-30px;
+	padding:6px;
+	
+	background-color:white;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	line-height:1;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0 0 1px white;
+	white-space:nowrap;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	z-index: 5;
+}
+
+.colorTip{
+	/* This class is assigned to the color tip span by jQuery */
+	
+	display:none;
+	position:absolute;	
+	left:50%;
+	top:-30px;
+	padding:6px;
+	
+	background-color:white;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:11px;
+	font-style:normal;
+	line-height:1;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:0 0 1px white;
+	white-space:nowrap;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	z-index: 5;
+}
+
+.pointyTip4,.pointyTipShadow4{
+	/* Setting a thick transparent border on a 0x0 div to create a triangle */
+	border:6px solid transparent;
+	right: -12px;
+	height:0;
+	position:absolute;
+	width:0;
+}
+
+.pointyTip3,.pointyTipShadow3{
+	/* Setting a thick transparent border on a 0x0 div to create a triangle */
+	border:6px solid transparent;
+	left:-6px;
+	height:0;
+	margin-left:-6px;
+	position:absolute;
+	width:0;
+}
+
+.pointyTip2,.pointyTipShadow2{
+	/* Setting a thick transparent border on a 0x0 div to create a triangle */
+	border:6px solid transparent;
+	top:-12px;
+	height:0;
+	left:50%;
+	margin-left:-6px;
+	position:absolute;
+	width:0;
+}
+
+.pointyTip,.pointyTipShadow{
+	/* Setting a thick transparent border on a 0x0 div to create a triangle */
+	border:6px solid transparent;
+	bottom:-12px;
+	height:0;
+	left:50%;
+	margin-left:-6px;
+	position:absolute;
+	width:0;
+}
+
+.pointyTipShadow4{
+	/* The shadow tip is 1px larger, so it acts as a border to the tip */
+	border-width:7px;
+	right: -14px;
+}
+
+.pointyTipShadow3{
+	/* The shadow tip is 1px larger, so it acts as a border to the tip */
+	border-width:7px;
+	margin-left:-8px;
+}
+
+.pointyTipShadow2{
+	/* The shadow tip is 1px larger, so it acts as a border to the tip */
+	border-width:7px;
+	top:-14px;
+	margin-left:-7px;
+}
+
+.pointyTipShadow{
+	/* The shadow tip is 1px larger, so it acts as a border to the tip */
+	border-width:7px;
+	bottom:-14px;
+	margin-left:-7px;
+}
+
+.colorTipContainer{
+	position:relative;
+	text-decoration:none !important;
+}
+
+
+/* 6 Available Color Themes */
+
+.white .pointyTip{ border-top-color:white;}
+.white .pointyTip2{ border-bottom-color:white;}
+.white .pointyTip3{ border-right-color:white;}
+.white .pointyTip4{ border-left-color:white;}
+.white .pointyTipShadow{ border-top-color:#ddd;}
+.white .pointyTipShadow2{ border-bottom-color:#ddd;}
+.white .pointyTipShadow3{ border-right-color:#ddd;}
+.white .pointyTipShadow4{ border-left-color:#ddd;}
+.white .colorTip,.white .colorTip2,.white .colorTip3,.white .colorTip4{
+	background-color:white;
+	border:1px solid #DDDDDD;
+	color:#555555;
+}
+
+.yellow .pointyTip{ border-top-color:#f9f2ba;}
+.yellow .pointyTip2{ border-bottom-color:#f9f2ba;}
+.yellow .pointyTip3{ border-right-color:#f9f2ba;}
+.yellow .pointyTip4{ border-left-color:#f9f2ba;}
+.yellow .pointyTipShadow{ border-top-color:#e9d315;}
+.yellow .pointyTipShadow2{ border-bottom-color:#e9d315;}
+.yellow .pointyTipShadow3{ border-right-color:#e9d315;}
+.yellow .pointyTipShadow4{ border-left-color:#e9d315;}
+.yellow .colorTip,.yellow .colorTip2,.yellow .colorTip3,.yellow .colorTip4{
+	background-color:#f9f2ba;
+	border:1px solid #e9d315;
+	color:#5b5316;
+}
+
+.blue .pointyTip{ border-top-color:#d9f1fb;}
+.blue .pointyTip2{ border-bottom-color:#d9f1fb;}
+.blue .pointyTip3{ border-right-color:#d9f1fb;}
+.blue .pointyTip4{ border-left-color:#d9f1fb;}
+.blue .pointyTipShadow{ border-top-color:#7fcdee;}
+.blue .pointyTipShadow2{ border-bottom-color:#7fcdee;}
+.blue .pointyTipShadow3{ border-right-color:#7fcdee;}
+.blue .pointyTipShadow4{ border-left-color:#7fcdee;}
+.blue .colorTip,.blue .colorTip2,.blue .colorTip3,.blue .colorTip4{
+	background-color:#d9f1fb;
+	border:1px solid #7fcdee;
+	color:#1b475a;
+}
+
+.green .pointyTip{ border-top-color:#f2fdf1;}
+.green .pointyTip2{ border-bottom-color:#f2fdf1;}
+.green .pointyTip3{ border-right-color:#f2fdf1;}
+.green .pointyTip4{ border-left-color:#f2fdf1;}
+.green .pointyTipShadow{ border-top-color:#b6e184;}
+.green .pointyTipShadow2{ border-bottom-color:#b6e184;}
+.green .pointyTipShadow3{ border-right-color:#b6e184;}
+.green .pointyTipShadow4{ border-left-color:#b6e184;}
+.green .colorTip,.green .colorTip2,.green .colorTip3,.green .colorTip4{
+	background-color:#f2fdf1;
+	border:1px solid #b6e184;
+	color:#558221;
+}
+
+.red .pointyTip{ border-top-color:#bb3b1d;}
+.red .pointyTip2{ border-bottom-color:#bb3b1d;}
+.red .pointyTip3{ border-right-color:#bb3b1d;}
+.red .pointyTip4{ border-left-color:#bb3b1d;}
+.red .pointyTipShadow{ border-top-color:#8f2a0f;}
+.red .pointyTipShadow2{ border-bottom-color:#8f2a0f;}
+.red .pointyTipShadow3{ border-right-color:#8f2a0f;}
+.red .pointyTipShadow4{ border-left-color:#8f2a0f;}
+.red .colorTip,.red .colorTip2,.red .colorTip3,.red .colorTip4{
+	background-color:#bb3b1d;
+	border:1px solid #8f2a0f;
+	color:#fcfcfc;
+	text-shadow:none;
+}
+
+.black .pointyTip{ border-top-color:#333;}
+.black .pointyTip2{ border-bottom-color:#333;}
+.black .pointyTip3{ border-right-color:#333;}
+.black .pointyTip4{ border-left-color:#333;}
+.black .pointyTipShadow{ border-top-color:#111;}
+.black .pointyTipShadow2{ border-bottom-color:#111;}
+.black .pointyTipShadow3{ border-right-color:#111;}
+.black .pointyTipShadow4{ border-left-color:#111;}
+.black .colorTip,.black .colorTip2,.black .colorTip3,.black .colorTip4{
+	background-color:#333;
+	border:1px solid #111;
+	color:#fcfcfc;
+	text-shadow:none;
+}

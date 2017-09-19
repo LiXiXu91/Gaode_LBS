@@ -1,0 +1,446 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+li{list-style:none;}
+ul{margin:0;padding:0;}
+.loadingbody{position: absolute;left: 0;right:0;top: 0;bottom: 0; background: rgba(0, 0, 0,0.5);z-index: 999999; text-align: center;}
+.loadingbody img{ width: 100px;margin: calc((100vh - 100px) / 2) auto 0 auto;}
+
+.marker-route {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.marker-route i,
+.marker-route a {
+    width: 100%;
+    height: 100%;
+    display: inherit;
+}
+
+.marker-route-1 i {
+    background: url('../img/icon_map_tcc.png') no-repeat;
+}
+
+.marker-route-2 i {
+    background: url('../img/icon_map_xnc.png') no-repeat;
+}
+
+.marker-route-3 i {
+    background: url('../img/icon_map_gd.png') no-repeat;
+}
+
+.marker-route-4 i {
+    background: url('../img/icon_map_zx.png') no-repeat;
+}
+
+.marker-route-5 i {
+    background: url('../img/icon_map_lx.png') no-repeat;
+}
+
+.mypanel {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+}
+
+.mypanel .panelitem {
+    background: #0D9BF2;
+    padding: 5px 10px;
+    margin-right: 10px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.bottomPanel {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10000;
+    width: calc(100vw - 395px);
+    height: 60px;
+    background: #fff;
+}
+
+.playspeed4 {
+    width: 45px;
+    height: 45px;
+    z-index: 10000;
+    font-size: 30px;
+    color: #58C9F3;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.playToggle {
+    display: inline-block;
+    line-height: 60px;
+    vertical-align: top;
+    width: 230px;
+    padding: 0 0 0 50px;
+}
+
+.playSpeed {
+    display: inline-block;
+    line-height: 60px;
+    vertical-align: top;
+    width: 240px;
+}
+
+.playToggle {
+    cursor: pointer;
+    color: #A7A7A7;
+    font-size: 29px;
+}
+
+.playToggle .playToggleLeft,
+.playToggle .playToggleCenter,
+.playToggle .playToggleRight {
+    width: 30px;
+    height: 30px;
+}
+
+.playToggle .playToggleCenter {
+    margin: 0 30px;
+    color: #58C9F3;
+}
+
+.proRate {
+    display: inline-block;
+    width: calc(100% - 480px);
+    height: 50px;
+    padding: 2px 10px;
+    color: #fff;
+    text-align: center;
+    padding-top: 26px;
+}
+
+.proRate .mysliderAll {
+    background: #f0f2f7;
+    border: none;
+    height: 8px;
+    margin: 0 30px 0 10px;
+}
+
+.proRate .mysliderSel {
+    background: #58c9f3;
+    height: 8px;
+}
+
+.proRate .mysliderBlock {
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #58c9f3;
+    outline: none;
+}
+
+.playSpeed .speedItem {
+    /* padding: 0 5px; */
+    cursor: pointer;
+    color: #666;
+    float: left;
+}
+
+.playSpeed .active {
+    color: #58C9F3;
+}
+
+.playSpeed .playspeed2 {
+    margin: 0 28px;
+}
+
+.searchbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+}
+
+.searchinputs {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 365px;
+    height: 136px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.searchcontext {
+    position: absolute;
+    top: 156px;
+    left: 10px;
+    width: 365px;
+    height: calc(100vh - 166px);
+    display: none;
+    transition: 0.3s;
+}
+
+.searchinput {
+    height: 40px;
+    padding: 3px 0 0 0;
+}
+
+.searchbody {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow-y: auto;
+    border-radius: 4px;
+    position: relative;
+}
+
+.searchbody .resultbody {
+    height: 132px;
+    padding-top: 10px;
+}
+
+.closeresultbody {
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    border-radius: 50%;
+    background: #eee;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.closeresultbody2 {
+    width: 27px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    border-radius: 50%;
+    background: #eee;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.searchbody .resultbody:last-child {
+    height: 142px;
+    padding-bottom: 10px;
+}
+
+.searchbody .resultbody .resultcontext {
+    height: 120px;
+    background: #fff;
+    margin: 0 10px 0 10px;
+    border-radius: 4px;
+    border: 1px solid #e0e3e9;
+}
+.searchbody .resultbody .resultcontext:hover {
+    background: #eee;
+}
+
+.resultleft {
+    float: left;
+    width: 283px;
+    padding: 6px 0 0 0;
+}
+
+.resultright {
+    float: left;
+    width: 60px;
+    cursor: pointer;
+}
+
+.resultinput {
+    height: 28px;
+    padding: 0 0 0 30px;
+    line-height: 28px;
+}
+
+.resultinput:nth-child(1) {
+    padding: 0 0 0 10px;
+}
+
+.resultright .resultplaybtn {
+    margin: 44px 0 0 5px;
+}
+
+.resultright .resultplaybtn i {
+    font-size: 36px;
+    color: #58c9f3;
+}
+
+.resultinput .resultnumber {
+    color: #58c9f3;
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    font-size: 16px;
+}
+
+.resultinput .resulttite {
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.resultinput .left {
+    font-size: 14px;
+    color: #666;
+}
+
+.resultinput .sep {
+    margin: 0 10px 0 10px;
+    color: #58c9f3;
+    font-size: 14px;
+}
+
+.resultinput .right {
+    font-size: 14px;
+    color: #666;
+}
+
+.resultinput .date {
+    font-size: 12px;
+    color: #999;
+}
+
+
+/*rightPanel*/
+
+.rightPanel {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    /* border: 1px solid red; */
+    z-index: 10000;
+}
+
+.rightPanel .showWL {
+    cursor: pointer;
+}
+
+.rightPanel .waitPlay {
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    color: #41cac0;
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+}
+
+.waitplaybox {
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
+
+.rightPanel .faWait i {
+    font-size: 26px;
+    width: 18px;
+    /* height: 18px; */
+    margin: 0 15px 0 10px;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.rightPanel .faGaojing {
+    color: #fff;
+    background: #FF0000;
+    position: relative;
+}
+
+.rightPanel .faGaojing .gaojingContent {
+    position: absolute;
+    top: 0;
+    right: 160px;
+    background: rgba(255, 0, 0, 0.7);
+    color: #fff;
+    font-size: 18px;
+    width: 325px;
+    height: 70px;
+    line-height: 27px;
+    padding-top: 8px;
+    padding-left: 30px;
+}
+
+.rightPanel .faGaojing i.fa-pause {
+    font-size: 18px;
+    width: 18px;
+    /* height: 18px; */
+    margin: 0 15px 0 10px;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+.rightPanel .faGaojing i.fa-exclamation-triangle {
+    font-size: 18px;
+    width: 18px;
+    /* height: 18px; */
+    margin-left: 10px;
+    vertical-align: middle;
+    line-height: 35px;
+}
+
+
+/*地图信息窗体样式更改 */
+
+body .amap-info-content {
+    background: rgba(255, 0, 0, 0.7);
+    border: none;
+}
+
+body .amap-info-close {
+    color: #fff;
+}
+
+body .amap-info-sharp {
+    background: url('../img/sharp.png');
+}
+
+
+/*地图信息窗体样式更改--end */
+
+
+/*加载框 */
+
+.searchloading {
+    /* height: 100%; */
+    /* padding-top:calc(50% - 16px); */
+    text-align: center;
+    background: #fff;
+    padding: 70px 0;
+}
+
+
+/*加载框--end */
+
+.alertmessage {
+    position: absolute;
+    bottom: 70px;
+    left: calc((100vw - 400px) / 2);
+    width: 400px;
+    z-index: 1600;
+    display: none;
+}
+div.amap-marker-label{background: rgba(255, 255, 255, 0.6);border: 1px solid rgb(142, 142, 142);}
+
+.messageIndex{width:348px;background:#fff;display:none;}
+.messageIndex li{color:#222;}
+.messageIndex li a{display:block;text-decoration: none;height:24px;line-height:24px;text-align:left;font-size:14px;padding:0 6px;}
+.messageIndex li a:hover{background-color:#ff6c60;color:#fff;  }
